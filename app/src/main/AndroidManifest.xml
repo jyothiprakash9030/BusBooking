@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,23 +15,85 @@
         android:theme="@style/Theme.VcartBusbooking"
         tools:targetApi="31">
         <activity
-            android:name=".BusDetailsActivity"
+            android:name=".Account"
             android:exported="false" />
+        <activity
+            android:name=".Booking_page"
+            android:exported="false" />
+        <activity
+            android:name=".help_page"
+            android:exported="false" />
+
+        <activity
+            android:name=".Payment"
+            android:exported="true" />
+        <activity
+            android:name=".fake"
+            android:exported="false" />
+        <activity
+            android:name=".SearchResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home_screen_grocery"
+            android:exported="false" />
+        <activity
+            android:name=".acess_location_for_grocery"
+            android:exported="false" />
+        <activity
+            android:name=".opening_screen_grocery"
+            android:exported="false" />
+        <activity
+            android:name=".Floating_screen_grocery"
+            android:exported="false" />
+        <activity
+            android:name=".Passenger_details"
+            android:exported="false" />
+        <activity
+            android:name=".Droping_point"
+            android:exported="false" />
+        <activity
+            android:name=".Sleeper_seatView"
+            android:exported="false" />
+        <activity
+            android:name=".Next"
+            android:exported="false" />
+        <activity
+            android:name=".Bus_Seating_view"
+            android:exported="true" />
+        <activity
+            android:name=".AcessLocation"
+            android:exported="false" />
+        <activity
+            android:name=".Emailotp"
+            android:exported="false" />
+        <activity
+            android:name=".Using_Email_login"
+            android:exported="false" />
+        <activity
+            android:name=".Welcomepagesecond"
+            android:exported="true" />
+        <activity
+            android:name=".WelcomePage"
+            android:exported="true"/>
+
+        <activity
+            android:name=".BusDetailsActivity"
+            android:exported="true" />
         <activity
             android:name=".MobileOtp"
             android:exported="false" />
         <activity
             android:name=".Using_MobileNumber_login"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".SourceAndDestination"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true" />

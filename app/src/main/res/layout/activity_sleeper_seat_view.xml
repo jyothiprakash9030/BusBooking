@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFAFA"
+        android:padding="8dp"
+        tools:context=".MainActivity">
+
+
+
+
+
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:background="#F8EEDB">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Back Button"
+                android:background="@null" />
+
+            <TextView
+                android:id="@+id/bus_seatingtoadress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Chennai"
+                android:textSize="14sp"
+                android:textStyle="bold"
+
+
+                android:gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frontarrow"
+                android:paddingStart="11dp"
+                android:paddingEnd="5dp"
+
+
+
+
+                />
+
+            <TextView
+                android:id="@+id/bus_seatingfromadress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="11dp"
+                android:text="Banglore"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/bus_seatingvisibledate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mon, 18 Oct 2024"
+                android:paddingStart="11dp"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                />
+            <TextView
+                android:id="@+id/TotalAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$500"
+                android:paddingStart="20dp"
+
+                android:textStyle="bold"
+                android:textSize="12sp"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center">
+
+            <!-- Step 1: Seat Selection -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/icon_seat_selection"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/busimage_radio"
+                    android:background="@drawable/step_circle_active" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seat Selection"
+                    android:textSize="12sp"
+                    android:textColor="@color/red" />
+            </LinearLayout>
+
+            <!-- Line connecting Step 1 and Step 2 -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="0.5"
+                android:background="@color/gray" />
+
+            <!-- Step 2: Boarding Point -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/icon_boarding_point"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ellipse_boading"
+                    android:background="@drawable/step_circle_inactive" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Boarding Point"
+                    android:textSize="11sp"
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+            <!-- Line connecting Step 2 and Step 3 -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="0.5"
+                android:background="@color/gray" />
+
+            <!-- Step 3: Dropping Point -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/icon_dropping_point"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ellipse_boading"
+                    android:background="@drawable/step_circle_inactive" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dropping Point"
+                    android:textSize="11sp"
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+   android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <!-- Berth Type Label -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="28dp"
+                android:text="Berth Type"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/gray"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Lower Button -->
+            <Button
+                android:id="@+id/btn_lower"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="28dp"
+
+                android:text="Lower"
+                android:textSize="12sp"
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:drawableStart="@drawable/baseline_keyboard_double_arrow_down_24"
+               />
+
+            <!-- Upper Button -->
+            <Button
+                android:id="@+id/btn_upper"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="28dp"
+                android:background="@drawable/btn_lower_active"
+                android:text="Upper"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/baseline_keyboard_double_arrow_up_24"
+
+
+                android:layout_marginStart="8dp" />
+
+            <!-- Info Button -->
+            <Button
+                android:id="@+id/btn_info"
+                android:layout_width="0dp"
+                android:layout_height="28dp"
+
+                android:layout_weight="1"
+                android:background="@drawable/btn_inactive"
+                android:text="info"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:drawableTop="@drawable/info"
+
+
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+     android:layout_gravity="center"
+
+            android:padding="16dp"
+            android:background="@color/white"
+            android:paddingStart="50dp"
+            android:paddingEnd="10dp"
+            tools:ignore="RtlSymmetry">
+
+            <!-- Seating Grid -->
+            <GridLayout
+                android:id="@+id/seatingLayout_sleeper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="4"
+                android:rowCount="6"
+                android:padding="16dp"
+           android:layout_gravity="center"
+                android:background="@color/white"
+                android:alignmentMode="alignMargins"
+                android:rowOrderPreserved="true" />
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/proceed_button"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/proceed_btn_background"
+        android:gravity="center"
+        android:text="Select Boarding &amp; Dropping Point"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />r
+</RelativeLayout>

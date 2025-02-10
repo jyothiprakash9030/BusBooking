@@ -6,4 +6,12 @@
     <color name="red">#D70419</color>
     <color name="gray">#CCCCCC</color>
     <color name="otpboarder">#DEDDDD</color>
+    <color name="green">#007B1D</color>
+    <color name="seatbackground">#FBFAFA</color>
+    <color name="gray1">#808080</color>
+
+    <color name="green1">#4CAF50</color>
+    <color name="dark_green">#388E3C</color>
+    <color name="light_gray">#E0E0E0</color>
+
 </resources>

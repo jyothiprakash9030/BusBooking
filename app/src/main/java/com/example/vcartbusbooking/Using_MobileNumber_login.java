@@ -1,6 +1,8 @@
 package com.example.vcartbusbooking;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,10 +17,14 @@ public class Using_MobileNumber_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_using_mobile_number_login);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        Button button=findViewById(R.id.btn_generate_otp);
+        button.setOnClickListener(view -> {
+            Intent intent=new Intent(Using_MobileNumber_login.this,Using_Email_login.class);
+            startActivity(intent);
+
+
+
+
         });
     }
 }
