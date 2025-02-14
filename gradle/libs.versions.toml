@@ -1,5 +1,7 @@
 [versions]
 agp = "8.7.3"
+comGoogleAndroidMaterialMaterial = "1.11.0"
+googleMaterialVersion = "1.10.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -17,6 +19,8 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+material-v1100 = { module = "com.google.android.material:material", version.ref = "googleMaterialVersion" }
+material-v1110 = { module = "com.google.android.material:material", version.ref = "comGoogleAndroidMaterialMaterial" }
 recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 
 [plugins]

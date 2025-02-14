@@ -55,9 +55,13 @@ public class BusDetailsActivity extends AppCompatActivity {
             // Populate the RecyclerView
             itemList = new ArrayList<>();
             itemList.add(new Item("Parveen Travels:", 300, "11:00Am", "4:00pm"));
-            itemList.add(new Item("Amarnath Travels", 500, "12:00pm", "4:00pm"));
+            itemList.add(new Item("Amarnath Travels", 500, "12:00pm", "5:00pm"));
             itemList.add(new Item("Uts Tours And Travels", 300, "11:00pm", "4:00pm"));
             itemList.add(new Item("jp", 300, "11:00Am", "4:00pm"));
+        itemList.add(new Item("Parveen Travels:", 300, "11:00Am", "4:00pm"));
+        itemList.add(new Item("Amarnath Travels", 500, "12:00pm", "4:00pm"));
+        itemList.add(new Item("Parveen Travels:", 300, "11:00Am", "4:00pm"));
+        itemList.add(new Item("Amarnath Travels", 500, "12:00pm", "4:00pm"));
 
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ItemAdapter(BusDetailsActivity.this, itemList, from, to, date);
@@ -87,6 +91,7 @@ public class BusDetailsActivity extends AppCompatActivity {
                     itemList.add(new Item("Amarnath Travels", 500, "12:00pm", "4:00pm"));
                     itemList.add(new Item("Uts Tours And Travels", 300, "11:00pm", "4:00pm"));
                     itemList.add(new Item("jp", 300, "11:00Am", "4:00pm"));
+
                 }
                 recyclerView.setLayoutManager(new LinearLayoutManager(BusDetailsActivity.this));
                 adapter = new ItemAdapter(BusDetailsActivity.this, itemList, from, to, date);

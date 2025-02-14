@@ -1,14 +1,18 @@
 package com.example.vcartbusbooking;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +55,19 @@ public class Bus_Seating_view extends AppCompatActivity {
 
 
 
+        HorizontalScrollView scrollView = findViewById(R.id.horizontalScrollView);
+
+        scrollView.post(() -> {
+            ValueAnimator animator = ValueAnimator.ofInt(0, scrollView.getChildAt(0).getWidth());
+            animator.setDuration(5000); // 5 seconds for slow scrolling
+            animator.setRepeatCount(ValueAnimator.INFINITE); // Repeat infinitely
+            animator.setRepeatMode(ValueAnimator.RESTART); // Restart from beginning
+            animator.addUpdateListener(animation ->
+                    scrollView.scrollTo((int) animation.getAnimatedValue(), 0)
+            );
+            animator.start();
+        });
+
 
 
 
@@ -70,94 +87,64 @@ public class Bus_Seating_view extends AppCompatActivity {
         int columns = 5; // Total columns
         int p = 0;
 
-        // Reference to GridLayout
         GridLayout seatingLayout = findViewById(R.id.seatingLayout);
         seatingLayout.setRowCount(rows);
         seatingLayout.setColumnCount(columns);
 
-        // Create ImageView for the driver's seat and position it at the top-right
+// Create ImageView for driver's seat
         ImageView driverSeatImage = new ImageView(this);
-        driverSeatImage.setImageResource(R.drawable.imagedriver); // Add your driver's seat image in drawable folder
+        driverSeatImage.setImageResource(R.drawable.imagedriver);
         GridLayout.LayoutParams driverParams = new GridLayout.LayoutParams();
-        driverParams.rowSpec = GridLayout.spec(0, 1); // Top row
-        driverParams.columnSpec = GridLayout.spec(columns - 1, 1); // Last column (top-right)
+        driverParams.rowSpec = GridLayout.spec(0, 1);
+        driverParams.columnSpec = GridLayout.spec(columns - 1, 1);
+        driverParams.width = 40;  // Adjusted size for better scaling
+        driverParams.height = 80;
         driverSeatImage.setLayoutParams(driverParams);
-        driverParams.width = 50;  // Set the desired width for the driver's seat image
-        driverParams.height = 100;
         seatingLayout.addView(driverSeatImage);
 
-        // Initial amount (default for one seat)
-        int seatPrice = 500; // Price per seat
-        AtomicInteger selectedSeats = new AtomicInteger(0); // Track selected seats
-//        TextView passengerCountTextView = findViewById(R.id.passenger_count);
-//        passengerCountTextView.setText(" Passenger(s)|"); // Initial value
-        // Reference to the TextView to display the amount
-//        TextView amountTextView = findViewById(R.id.passenger_info);
-//        amountTextView.setText("₹ " + selectedSeats.get() * seatPrice); // Display initial amount
-        TextView count_seat=findViewById(R.id.TotalAmount);
+// Seat price calculation
+        int seatPrice = 500;
+        AtomicInteger selectedSeats = new AtomicInteger(0);
+        TextView passengerCountTextView = findViewById(R.id.passenger_count);
+        TextView amountTextView = findViewById(R.id.TotalAmount);
+        passengerCountTextView.setText("0 Passenger(s) |");
+        amountTextView.setText("₹ 0");
 
-        count_seat.setText(" ");
+// Adjust seat size dynamically based on screen width
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        int screenWidth = displayMetrics.widthPixels;
+        int seatSize = screenWidth / (columns * 2);  // Adjust based on screen size
 
-
-
-
-        // Loop to generate seats dynamically
+// Generate seats dynamically
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 if (j == 2 && i != rows - 1) {
-                    // Add a gap (invisible view) for the aisle
                     View gap = new View(this);
                     GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-                    params.width = 50; // Width of the aisle gap
-                    params.height = 50; // Height of the aisle gap
+                    params.width = seatSize / 2;
+                    params.height = seatSize / 2;
                     gap.setLayoutParams(params);
                     seatingLayout.addView(gap);
-
-
-
-
-
-
                 } else {
-                    // Create a button for the seat
                     Button seatButton = new Button(this);
                     GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-                    params.width = 100; // Seat width
-                    params.height = 130; // Seat height
-                    params.setMargins(10, 10, 10, 10); // Margins between seats
+                    params.width = seatSize;
+                    params.height = seatSize;
+                    params.setMargins(5, 15, 5, 15);
                     seatButton.setLayoutParams(params);
+                    seatButton.setText("D" + p);
 
-                    // Set seat text based on position
-                    String seatText = "D" + p;
-
-                    seatButton.setText(seatText);
-
-                    // Check if the seat is D1, mark it as the conductor's seat
                     if (p == 0) {
-                        seatButton.setText("C"); // Conductor's seat
-                        seatButton.setBackgroundColor(Color.parseColor("#FFDD00")); // Yellow color for conductor
-                    }
-                    else if (p == 19) {
-
-                        seatButton.setBackgroundResource(R.drawable.women_seat_bg); // Yellow color for conductor
-                    }
-                    else if (p == 2) {
-
-                        seatButton.setBackgroundResource(R.drawable.challenged_or_senior_seat_bg); // Yellow color for conductor
-                    }
-//                    else if (p == 22) {
-//                        seatButton.setBackgroundColor(Color.parseColor("#78CE9C"));
-//                       // Yellow color for conductor
-//                    }
-                    else if (p == 13||p==14||p==26||p==33||p==6||p==12||p==24||p==21) {
-
-                        seatButton.setBackgroundResource(R.drawable.seat_booked_bg); // Yellow color for conductor
-                    }
-
-
-
-                    else {
-                        seatButton.setBackgroundColor(Color.parseColor("#F8FDFF")); // Default color for other seats
+                        seatButton.setText("C");
+                        seatButton.setBackgroundColor(Color.parseColor("#FFDD00")); // Conductor seat
+                    } else if (p == 19) {
+                        seatButton.setBackgroundResource(R.drawable.women_seat_bg);
+                    } else if (p == 2) {
+                        seatButton.setBackgroundResource(R.drawable.challenged_or_senior_seat_bg);
+                    } else if (p == 13 || p == 14 || p == 26 || p == 33 || p == 6 || p == 12 || p == 24 || p == 21) {
+                        seatButton.setBackgroundResource(R.drawable.seat_booked_bg);
+                    } else {
+                        seatButton.setBackgroundColor(Color.parseColor("#F8FDFF"));
                     }
 
                     p++;
@@ -165,37 +152,32 @@ public class Bus_Seating_view extends AppCompatActivity {
                     seatButton.setTextColor(Color.BLACK);
 
                     seatButton.setOnClickListener(v -> {
-                        // Skip updating for the conductor's seat
                         if ("C".equals(seatButton.getText().toString())) {
-                            Toast.makeText(Bus_Seating_view.this, "Conductor's seat cannot be selected!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Conductor's seat cannot be selected!", Toast.LENGTH_SHORT).show();
                             return;
                         }
 
                         if (v.isSelected()) {
                             v.setSelected(false);
-                            seatButton.setBackgroundColor(Color.parseColor("#F8FDFF")); // Deselect seat
-                            selectedSeats.decrementAndGet(); // Decrease seat count
+                            seatButton.setBackgroundColor(Color.parseColor("#F8FDFF"));
+                            selectedSeats.decrementAndGet();
                         } else {
                             v.setSelected(true);
-                            seatButton.setBackgroundColor(Color.parseColor("#78CE9C")); // Select seat
-                            selectedSeats.incrementAndGet(); // Increase seat count
+                            seatButton.setBackgroundColor(Color.parseColor("#78CE9C"));
+                            selectedSeats.incrementAndGet();
                         }
 
-                        // Calculate and update total amount
                         int totalAmount = selectedSeats.get() * seatPrice;
-
-//                        amountTextView.setText("₹ " + totalAmount);
-//                        passengerCountTextView.setText(selectedSeats.get() + " Passenger(s)|");
-//                        TotalAmount.setText("₹ " + totalAmount);
-                        count_seat.setText("₹ " + totalAmount);
+                        amountTextView.setText("₹ " + totalAmount);
+                        passengerCountTextView.setText(selectedSeats.get() + " Passenger(s) |");
                     });
 
-
-                    // Add the button to the GridLayout
                     seatingLayout.addView(seatButton);
                 }
             }
         }
+
+
 
         // Button logic for lower, upper, and info sections
         Button btnLower = findViewById(R.id.btn_lower);
@@ -323,6 +305,8 @@ public class Bus_Seating_view extends AppCompatActivity {
             i1.putExtra("endTime", endTime);
             i1.putExtra("to",to);
             i1.putExtra("from",from);
+            i1.putExtra("amount", TotalAmount.getText().toString()); // Fixed line
+
             startActivity(i1);
 
         });

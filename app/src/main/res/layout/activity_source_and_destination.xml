@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
-
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
@@ -11,14 +13,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SourceAndDestination"
-    android:background="#F8FDFF"
+
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="40dp"
+
         android:padding="16dp"
         tools:ignore="ExtraText,MissingConstraints">
 
@@ -664,10 +666,14 @@
         android:id="@+id/footer_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:background="@color/white"
-        android:weightSum="4">
+       >
 
         <!-- Home -->
         <LinearLayout
@@ -761,4 +767,4 @@ android:id="@+id/account_img"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

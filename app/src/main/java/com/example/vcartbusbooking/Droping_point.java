@@ -2,6 +2,7 @@ package com.example.vcartbusbooking;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -14,7 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Droping_point extends AppCompatActivity {
-TextView bus_seatingtoadress,bus_seatingfromadress,bus_seatingvisibledate,bus_name,droping_Timing,pickupt_timing;
+TextView bus_seatingtoadress,bus_seatingfromadress,bus_seatingvisibledate,bus_name,droping_Timing,pickupt_timing,amounts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,25 +69,36 @@ TextView bus_seatingtoadress,bus_seatingfromadress,bus_seatingvisibledate,bus_na
         bus_seatingfromadress=findViewById(R.id.bus_seatingfromadress);
         bus_seatingvisibledate=findViewById(R.id.bus_seatingvisibledate);
         bus_name=findViewById(R.id.bus_name);
-        droping_Timing=findViewById(R.id.droping_Timing);
-        pickupt_timing=findViewById(R.id.pickupt_timing);
+        amounts=findViewById(R.id.amount);
+//        droping_Timing=findViewById(R.id.droping_Timing);
+//        pickupt_timing=findViewById(R.id.pickupt_timing);
 
         String from = getIntent().getStringExtra("from");
         String to = getIntent().getStringExtra("to");
         String date = getIntent().getStringExtra("date");
-
+String amount=getIntent().getStringExtra("amount");
         String travelsname=getIntent().getStringExtra("busName");
-       String startTime=getIntent().getStringExtra("startTime");
-      String endTime=getIntent().getStringExtra("endTime");
+//       String startTime=getIntent().getStringExtra("startTime");
+//      String endTime=getIntent().getStringExtra("endTime");
 
 
         bus_seatingtoadress.setText(from);
         bus_seatingfromadress.setText(to);
         bus_seatingvisibledate.setText(date);
         bus_name.setText(travelsname);
-     droping_Timing.setText(startTime);
-     pickupt_timing.setText(endTime);
+        amounts.setText(amount);
+//     droping_Timing.setText(startTime);
+//     pickupt_timing.setText(endTime);
+
+     Button proceed_button=findViewById(R.id.proceed_button);
+
+        proceed_button.setOnClickListener(view -> {
 
 
+
+
+        Intent i=new Intent(Droping_point.this,Payment.class);
+        startActivity(i);
+        });
     }
 }

@@ -73,19 +73,19 @@ android:background="@drawable/customised_mobile_otp_bg"
 
             />
 
+        <!-- Generate OTP Button -->
         <EditText
             android:id="@+id/et_phone_number"
             android:layout_width="match_parent"
             android:layout_height="44dp"
 
+            android:background="@drawable/source_destination_background"
+            android:drawableStart="@drawable/phone"
+            android:drawablePadding="16dp"
             android:hint="+91 Enter Phone Number"
             android:inputType="phone"
-android:drawablePadding="16dp"
-            android:drawableStart="@drawable/phone"
-            android:paddingStart="11dp"
-            android:background="@drawable/source_destination_background"/>
+            android:paddingStart="11dp" />
 
-        <!-- Generate OTP Button -->
         <Button
             android:id="@+id/btn_generate_otp"
             android:layout_width="match_parent"
